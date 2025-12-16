@@ -1,23 +1,20 @@
 package main
 
-import (
-	"fmt"
-	"math"
-)
+import "fmt"
 
 func main() {
-	var a, b int = 12, 11
+	var nums = make([]int, 10)
+	nums = append(nums, 0, 1, 2, 3, 4, 5, 6, 7, 8)
 
-	var result int = a + b
-	fmt.Println("a + b = ", result)
+	fmt.Println(rangeSum(nums...))
+}
 
-	var res float32 = float32(a / b)
-	fmt.Println("\n a / b = ", res)
+// we are saying there can be unlimited params of type int.
+func rangeSum(nums ...int) (sum int) {
+	sum = 0
+	for _, num := range nums {
+		sum += num
+	}
 
-	var largeValue int32 = math.MaxInt32
-	var smallValue int32 = math.MinInt32
-
-	fmt.Println("large value + 1 = ", largeValue+1)
-	fmt.Println("small value - 1 = ", smallValue-1)
-
+	return
 }

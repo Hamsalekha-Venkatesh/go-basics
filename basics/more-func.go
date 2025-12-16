@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 func main() {
 	fmt.Println("ADD oper() calling ", applyOperation(2, 3, add))
@@ -12,6 +15,22 @@ func main() {
 
 	fmt.Println("Calling multiplierByTwo(...)...")
 	fmt.Println(multiplierByTwo(5))
+
+	//q1, r1, isOK1 := divide(12, 0)
+	//q2, r2, isOK2 := divide(26, 12)
+
+}
+
+func divide(num1 int, num2 int) (quotient int, remainder int, error) {
+	if num2 == 0 {
+		return -1, -1, errors.New("Can't divide, you will get divide by zero...")
+	}
+
+	quotient = num1 / num2
+	remainder = num1 % num2
+
+	return quotient, remainder, nil
+
 }
 
 // func that takes another func as argument....
