@@ -35,4 +35,6 @@ func main() {
 	fmt.Printf("Type of rune %T\n", message) //string
 	fmt.Printf("Type of rune %T\n", ch)      //int32
 	fmt.Printf("Type of rune %T\n", 23)      //int
+	s := fmt.Sprintln("hamsa", "lekha", 1223)
+	fmt.Println("S = ", s)
 }
