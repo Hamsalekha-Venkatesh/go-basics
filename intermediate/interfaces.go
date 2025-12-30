@@ -36,6 +36,7 @@ func (c circle) perimeter() float64 {
 	return 2 * math.Pi * c.radius
 }
 
+// extra  methods are still possible!
 func (c circle) dimeter() float64 {
 	return 2 * c.radius
 }
