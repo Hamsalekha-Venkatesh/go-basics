@@ -1,0 +1,18 @@
+INFO: logging.go:18: Hello World with info log
+INFO: logging.go:18: Hello World with info log
+INFO: logging.go:19: Hello World with info
+WARN: logging.go:20: Hello World with errors
+INFO: logging.go:18: Hello World with info log
+INFO: logging.go:19: Hello World with info
+WARN: logging.go:20: Hello World with errors
+INFO: logging.go:18: Hello World with info log
+INFO: logging.go:19: Hello World with info
+WARN: logging.go:20: Hello World with errors
+INFO: logging.go:18: Hello World with info log
+ERROR: logging.go:19: Hello World with info
+ERROR: logging.go:20: Hello World with errors
+INFO: logging.go:18: Hello World with info log
+ERROR: logging.go:19: Hello World with info
+ERROR: logging.go:20: Hello World with errors
+ERROR: logging.go:19: Hello World with info
+ERROR: logging.go:20: Hello World with errors
