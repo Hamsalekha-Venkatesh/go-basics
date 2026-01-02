@@ -21,26 +21,28 @@ type Address struct {
 
 func main() {
 	person := Person{
-		Name: "John",
-		//Age:  32,
+		Name:  "John",
+		Age:   32,
 		Email: "hamsa@gmail.com",
-		Address: &Address{
-			Street:  "123 Elm Street",
-			City:    "Wisconsin",
-			State:   "MN",
-			ZipCode: "1234",
-		},
+		//Address: &Address{
+		//	Street:  "123 Elm Street",
+		//	City:    "Wisconsin",
+		//	State:   "MN",
+		//	ZipCode: "1234",
+		//},
 	}
 
 	jsonData, err := json.MarshalIndent(person, " ", " ")
 	if err != nil {
 		return
 	}
+	fmt.Println(string(jsonData))
 
 	var person2 Person
 	err = json.Unmarshal(jsonData, &person2)
 	if err != nil {
 		return
 	}
-	fmt.Println(person2.Address.State)
+	fmt.Println(person2)
+	// fmt.Println(person2.Address.State)
 }
