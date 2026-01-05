@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"math/rand"
 	"sync"
@@ -31,11 +32,11 @@ type Result struct {
 func ticketProcessor(requestChan <-chan TicketRequest, resultsChan chan<- Result, wg *sync.WaitGroup) {
 	defer wg.Done()
 	for request := range requestChan {
-		//if request.numTickets+CONSUMED_TICKETS > TOTAL_AVAILABLE_TICKETS {
-		//	fmt.Println("Show is full, can't purchase. Aborting tx")
-		//	resultsChan <- Result{personId: -1, cost: -1, err: errors.New("Show is full, can't purchase. Aborting tx")}
-		//	continue
-		//}
+		if request.numTickets+CONSUMED_TICKETS > TOTAL_AVAILABLE_TICKETS {
+			fmt.Println("Show is full, can't purchase. Aborting tx")
+			resultsChan <- Result{personId: -1, cost: -1, err: errors.New("Show is full, can't purchase. Aborting tx")}
+			continue
+		}
 
 		CONSUMED_TICKETS += request.numTickets
 
@@ -67,7 +68,12 @@ func main() {
 	}
 
 	close(requestChan)
-	waitGroups.Wait()
+
+	// non-blocking mechanisms... get values in real time...
+	go func() {
+		waitGroups.Wait()
+		close(resultsChan)
+	}()
 
 	for result := range resultsChan {
 		if result.err != nil {

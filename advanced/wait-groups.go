@@ -14,8 +14,12 @@ func main() {
 	for i := range numWorkers {
 		workers(i, &wg)
 	}
-	wg.Wait() // wait until all goroutines are returned ...
-	fmt.Println("Done")
+
+	go func() {
+		wg.Wait() // wait until all goroutines are returned ...
+		fmt.Println("Done")
+	}()
+
 }
 
 func workers(id int, wg *sync.WaitGroup) {
